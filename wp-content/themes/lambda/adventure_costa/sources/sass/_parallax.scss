@@ -1,0 +1,56 @@
+/*==================  RD Parallax    ======================*/
+.parallax {
+  position: relative;
+  overflow: hidden;
+
+  &_image, &_pattern{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-position: center center;
+    will-change: transform;
+  }
+
+  &_image{
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
+
+  &_pattern{
+    background-repeat: repeat;
+  }
+
+  &_cnt{
+    position: relative;
+  }
+
+  h2,
+  h3 {
+    color: #fff;
+  }
+
+  h2 {
+    font-size: 120px;
+    line-height: 120px;
+  }
+
+  h3 {
+    font-size: 55px;
+    line-height: 55px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 479px) {
+    h2 {
+      font-size: 90px;
+      line-height: 90px;
+    }
+    h3 {
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
+}

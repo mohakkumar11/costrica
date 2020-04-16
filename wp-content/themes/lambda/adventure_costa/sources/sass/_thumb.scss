@@ -1,0 +1,104 @@
+/*==================   Thumbnail    ======================*/
+$overlay-bg: $primary;
+$overlay-bg-opacity: 0.38;
+$overlay-icon: $fa-plus;
+$overlay-icon-size: 12px;
+$overlay-icon-color: #fff;
+
+.gallery {
+  @include clearfix;
+  background: $primary;
+}
+
+
+.thumb {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 33.33333333333333%;
+  float: left;
+
+  img {
+  	width: 100%;
+  	height: auto;
+    @include transition(.5s all ease);
+  }
+
+  &_overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    @include transition(.3s all ease);
+    color: $overlay-icon-color;
+    background: transparent;
+    padding-top: 260px;
+    
+    &_cnt {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      margin-top: 34px;
+      font: 300 30px/30px $opensans;
+      text-align: center;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0;
+      @include transition(0.4s all ease);
+    }
+    
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -19px;
+      margin-top: -5px;
+      width: 38px;
+      height: 38px;
+      color: $primary;
+      background: url(../images/thumb-icon.png);
+      @include transform(translateY(-50%));
+      @include border-radius(50%);
+      @include transition(0.4s all ease);
+
+      .lt-ie9 & {
+        display: none;
+      }
+    }
+    
+  }
+
+  &:hover {
+    img {
+      opacity: .28;
+    }
+    .thumb_overlay {
+      opacity: 1;
+      // @include background($overlay-bg, $overlay-bg-opacity);
+      &:before {
+        top: 50%;
+      }
+
+      &_cnt {
+        opacity: 1;
+        top: 50%;
+      }
+      .lt-ie9 &:before {
+        display: block;
+      }
+    }
+  }
+
+  @media (max-width: 979px) {
+    width: 50%
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}

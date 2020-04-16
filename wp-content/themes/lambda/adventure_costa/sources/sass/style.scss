@@ -1,0 +1,704 @@
+﻿@import "_mixins.scss";
+@import "_variables.scss";
+@import "animate.css";
+
+// Fonts
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,600,700|Open+Sans+Condensed:300,700|Six+Caps|Qwigley);
+ 
+ 
+/*========================================================
+                      Main Styles
+=========================================================*/
+body {
+    background: $footer-bg;
+    color: $default;
+    font: 400 18px/26px $default-font;
+    -webkit-text-size-adjust: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    a {
+        color: inherit;
+        @include transition(0.3s all ease);
+        &:hover {
+            color: $primary;
+        }
+    }
+
+    &.primary a:hover {
+        color: $secondary2;
+    }
+}
+
+h1{ 
+
+}
+
+h2{
+	font: 700 48px/55px $opensans;
+    text-transform: uppercase;
+    color: $secondary;
+}
+
+h3{
+	font: 300 35px/38px $opensans;
+    color: #454545;
+}
+
+h4{
+    font: 300 26px/26px $opensans;
+    color: #7e7e7e;
+}
+
+h5{
+	font-weight: 700;
+}
+
+h6{
+	
+}
+
+p, .marked-list, .list{
+	a:hover{
+        text-decoration: underline;
+    }
+
+    .fa{
+    	text-decoration: none;
+    }
+}
+
+time {
+   display: block;
+}
+
+a {
+    font: inherit;
+    color: inherit;
+    text-decoration: none;
+
+    &:focus{
+        outline: none;
+    }
+
+    &:active{
+        background-color: transparent;
+    }
+
+    @include transition(.3s);
+}
+
+a[href^="tel:"],
+a[href^="callto:"] {
+    color: inherit;
+    text-decoration: none;
+}
+
+a[href^="mailto:"] {
+    color: $primary;
+    font-size: 24px;
+    font-family: $opensans;
+    font-weight: 300;
+    @include transition(0.3s all ease);
+    &:hover {
+        color: $secondary2;
+    }
+}
+
+strong {
+    font-weight: 700;
+}
+
+.fa{
+	line-height: inherit;
+}
+
+[class*='fa-']{
+    &:before{
+        font-weight: 400;
+    	font-family: $fa;
+    }     
+}
+
+.page {
+    overflow: hidden;
+    min-height: 500px;
+
+    .lt-ie9 & {
+        min-width: 1200px;
+    }
+}
+
+.center {
+    text-align: center;
+}
+
+.mobile-center {
+    @media (max-width: 767px) {
+        text-align: center;
+    }
+}
+
+.primary {
+    color: $primary;
+}
+
+.txt1 {
+    font: 400 20px/34px $default-font;
+}
+
+.mg-add {
+    margin-top: 11px;
+}
+/*=======================================================
+                       Main Layout
+=========================================================*/
+* + .row {
+    margin-top: 61px;
+}
+
+* + .off1 {
+    margin-top: 47px;
+}
+
+* + .off2 {
+    margin-top: 74px;
+}
+
+h2 + * {
+    margin-top: 22px;
+}
+
+h3 + * {
+    margin-top: 27px;
+}
+
+.product-list + * {
+    margin-top: 50px;
+}
+
+img + h3 {
+    margin-top: 44px;
+}
+
+p + img {
+    margin-top: 40px;
+}
+
+h3 + .btn {
+   margin-top: 46px; 
+}
+
+p + .pricing-table {
+    margin-top: 65px;
+}
+
+.row + .row {
+    margin-top: 30px;
+}
+
+.row.off2 + .row {
+    margin-top: 94px;
+}
+
+
+/*=======================================================
+                        Components
+=========================================================*/
+
+/*==================     Brand     ======================*/
+.brand {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 30px;
+    
+    &_name{
+        margin-top: -14px;
+        padding-left: 133px;
+        font: 400 174px/174px $sixcaps;
+        text-transform: uppercase;
+        color: #fff;
+        overflow: hidden;
+    }
+
+    &_slogan{
+        margin-top: 19px;
+        padding-left: 82px;
+        font: 400 130px/20px $qwigley;
+        color: #a1ff5a;
+    }
+
+    &:before {
+        position: absolute;
+        top: 0;
+        left: 18px;
+        content: "";
+        width: 394px;
+        height: 238px;
+        background: url(../images/logo-bg.png) center no-repeat;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: -84px;
+        left: 19px;
+        @include triangle(top, 442px, 84px, $primary);
+        z-index: 1;
+    }
+
+    @media (max-width: 479px) {
+        &_name {
+            font-size: 120px;
+            line-height: 120px;
+        }
+        &_slogan {
+            font-size: 90px;
+            margin-top: 0;
+            padding-left: 58px;
+        }
+
+        &:before {
+            background-size: contain;
+            width: 320px;
+            height: 170px;
+        }
+    }
+}
+
+/*==================  Backgrounds  ======================*/
+.bg-primary{
+    background: $primary;
+}
+
+.bg-color1 {
+    background: #f9f9f9;
+}
+
+/*==================     Icons     ======================*/
+.fa-facebook,
+.fa-twitter,
+.fa-google-plus,
+.fa-rss {
+    display: block;
+    width: 49px;
+    height: 49px;
+    font-family: $fa;
+    font-size: 16px;
+    line-height: 49px;
+    text-align: center;
+    color: #fff;
+    @include border-radius(50%);
+    @include transition(0.3s all ease);
+
+    &:hover {
+        background: $primary;
+    }
+}
+
+.fa-facebook {
+    background: #6982b8;
+}
+
+.fa-twitter {
+    background: #88d0e1;
+}
+
+.fa-google-plus {
+    background: #ff8a8e;
+}
+
+.fa-rss {
+    background: #f6cf71;
+}
+
+.fa-envelope {
+    color: $primary;
+    &:before {
+        padding-right: 13px;
+    }
+}
+
+/*==================    Buttons    ======================*/
+.btn {
+    display: inline-block;
+    width: 106px;
+    height: 106px;
+    padding: 13px;
+    font: 700 25px/80px $opensans;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    background: #f4b317;
+    @include border-radius(50%);
+    @include box-sizing(border-box);
+    @include transition(0.3s all ease);
+
+    &:hover{
+        background: $secondary2;
+    }
+
+    &:active{
+        background: darken($secondary2, 10%);
+    }
+}
+
+/*=================   Inline List    ===================*/
+.inline-list {
+    display: inline-block;
+    @include clearfix;
+    li {
+        float: left;
+        & + li {
+            margin-left: 17px;
+        }
+    }
+    
+    @media (max-width: 979px) {
+        li + li {
+            margin-left: 10px;
+        }
+    }
+
+}
+
+/*=================   Product List   ===================*/
+.product-list {
+    li {
+        @include box-shadow(0 0 3px 0 rgba(0,0,0,.3));
+        background: #fff;
+        
+        h3,
+        p {
+            padding: 0 48px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 23px;
+            color: #a5a5a5;
+        }
+        
+        &:nth-child(odd) {
+            padding-bottom: 47px;
+        }
+
+        &:nth-child(even) {
+            padding-top: 52px;
+        }
+
+        @media (max-width: 767px) {
+            img {
+                width: 100%;
+            }
+        }   
+    }
+}
+/*==================   Articles   ======================*/
+article {
+    p {
+        font-weight: 600;
+        color: #777777;
+    }
+
+    h5 + p {
+        margin-top: 22px;
+    }
+
+    @media (max-width: 767px) {
+        img {
+            width: 100%;
+        }
+    }
+}
+time {
+    font: 700 48px/55px $opensans;
+    color: $secondary;
+}
+
+time + h5 {
+    margin-top: 19px;
+}
+
+
+/*================   Pricing Table   ===================*/
+.pricing-table {
+    li {
+        padding: 9px 9px 40px;
+        text-align: center;
+        border: 1px solid #eaeaea;
+        @include box-sizing(border-box);
+
+        &:first-child {
+            .price,
+            .link {
+                color: #46b3ef;
+            }
+            
+            .price:after {
+                background: #46b3ef;
+            }
+        }
+
+        &:nth-child(2) {
+            .price,
+            .link {
+                color: #96d31c;
+            }
+            
+            .price:after {
+                background: #96d31c;
+            }
+        }
+
+        &:nth-child(3) {
+            .price,
+            .link {
+                color: #ffb82f;
+            }
+            
+            .price:after {
+                background: #ffb82f;
+            }
+        }
+
+        &:last-child {
+            .price,
+            .link {
+                color: #ff6839;
+            }
+            
+            .price:after {
+                background: #ff6839;
+            }
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 22px;
+            color: #4b5b55;
+            padding: 0 24px;
+
+            @media (max-width: 979px) and (min-width: 767px) {
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.price {
+    padding-bottom: 20px;
+    position: relative;
+
+    font: 700 55px/55px $opensans;
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 30px;
+        right: 30px;
+        height: 3px;
+        background: $secondary;
+        
+    }
+
+    sup {
+        vertical-align: top;
+        font-size: 33px;
+        line-height: 38px;
+    }
+
+    @media (max-width: 979px) and (min-width: 767px) {
+        font-size: 42px;
+    }
+}
+
+.link {
+    position: relative;
+    display: inline-block;
+    font: 700 24px/28px $opensans;
+    text-transform: uppercase;
+    &:before {
+        position: absolute;
+        left: 20px;
+        content: $fa-angle-left;
+        font-family: $fa;
+        font-size: 24px;
+        @include opacity(0);
+        @include transition(0.3s all ease);
+    }
+    &:after {
+        position: absolute;
+        right: 20px;
+        content: $fa-angle-right;
+        font-family: $fa;
+        font-size: 24px;
+        @include opacity(0);
+        @include transition(0.3s all ease);
+    }
+    &:hover {
+        &:after {
+            right: -14px;
+            @include opacity(1);
+        }
+        &:before {
+            left: -14px;
+            @include opacity(1);
+        }
+    }
+}
+
+img + .price {
+    margin-top: 38px;
+}
+
+.price + p {
+    margin-top: 34px;
+}
+
+p + .link {
+    margin-top: 22px;
+}
+//==================    Imports    ======================
+@import "_thumb.scss";
+@import "_parallax.scss";
+@import "_to-top.scss";
+
+/*========================================================
+                     HEADER  Section
+=========================================================*/
+header {
+    background: $header-bg;
+
+    
+}
+
+.header_panel {
+    position: absolute;
+    top: 769px;
+    left: 0;
+    right: 0;
+
+    @media (max-width: 1199px) {
+        position: static;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        .brand {
+            margin-left: -74px;
+        }
+    }
+
+    @media (max-width: 528px) {
+        .container {
+            width: 100%;
+        }
+    }
+}
+
+/*========================================================
+                     CONTENT  Section
+=========================================================*/
+main {
+    display: block;
+    background: $content-bg;
+}
+
+/*==================      Well     ======================*/
+.well{
+    padding-top: 84px;
+    padding-bottom: 108px;
+}
+
+.well2 {
+    padding-top: 91px;
+    padding-bottom: 151px;
+}
+
+.well3 {
+    padding-top: 154px;
+    padding-bottom: 127px;
+}
+
+.ins1 {
+    padding-bottom: 67px;
+}
+
+/*========================================================
+                     FOOTER  Styles
+=========================================================*/
+footer{
+    height: 324px;
+    background: $footer-bg;
+    border-top: 7px solid #ffffff;
+
+    a[href^="mailto:"] {
+        float: left;
+    }
+    .copyright {
+        float: right;
+    }
+
+    address {
+        font-size: 24px;
+        font-family: $opensans;
+        line-height: 36px;
+        text-transform: uppercase;
+    }
+    
+    div[class^="grid"] {
+        position: relative;
+        top: 50%;
+        @include transform(translateY(-50%));
+    }
+
+    .row,
+    .container {
+        height: 100%;
+    }
+    @media (max-width: 1199px) {
+        a[href^="mailto:"] {
+            float: right;
+        }
+
+        * + .copyright {
+            margin-top: 14px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        height: auto;
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        a[href^="mailto:"],
+        .copyright {
+            float: none;
+        }
+
+        div[class^="grid"] {
+            transform: none;
+            top: 0;
+        }
+    }
+}
+
+
+.copyright {
+    font-size: 22px;
+    font-family: $opensans;
+    text-transform: uppercase;
+}

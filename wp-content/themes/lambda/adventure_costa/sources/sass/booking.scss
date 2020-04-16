@@ -1,0 +1,518 @@
+@import "_variables.scss";
+@import "_mixins.scss";
+
+@mixin customStyle() {
+  @include box-sizing(border-box);
+  border: 1px solid #c7c7c7;
+  color: #888888;
+  background: #fff;
+}
+
+@mixin buttonStyle() {
+  display: block;
+  color: #FFF;
+  background: $secondary2;
+  font-family: $opensans;
+  font-weight: 700;
+  font-size: 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  @include transition(.3s box-shadow ease);
+  &:hover {
+    -webkit-box-shadow: inset 0px 0px 15px 0px rgba(0,0,0,.3);
+    -moz-box-shadow: inset 0px 0px 15px 0px rgba(0,0,0,.3);
+    box-shadow: inset 0px 0px 15px 0px rgba(0,0,0,.3);
+  }
+
+  &:active {
+    background: darken($secondary2, 2%);
+  }
+
+  @media (max-width: 479px) {
+    font-size: 18px;
+  }
+}
+
+
+
+/* Control Holder */
+.booking_wr {
+  position: relative;
+  right: 0;
+  width: 510px;
+  float: right;
+  
+
+  h2 {
+    font-size: 50px;
+  }
+
+
+
+  h4 {
+    text-transform: uppercase;
+  } 
+
+  h4 + * {
+    margin-top: 36px;
+  }
+  
+  h2 + h4 {
+    margin-top: 4px;
+  }
+  small {
+    font: 300 22px $opensans;
+    text-transform: uppercase;
+    text-align: left!important;
+    color: #686868;
+  }
+
+  * + p {
+    margin-top: 29px;
+  }
+
+  @media (max-width: 1199px) {
+    position: absolute;
+    top: 286px;
+    left: 0;
+    right: 0;
+    width: auto;
+    
+  }
+
+  @media (max-width: 528px) {
+    position: static;
+    width: 100%;
+    margin-top: 44px;
+    @include box-sizing(border-box);
+
+
+    h2 {
+      font-size: 35px;
+      line-height: 38px;
+    }
+
+    small {
+      font-size: 15px;
+    }
+
+    .booking-form .tmInput input {
+      font-size: 18px;
+    }
+  }
+
+
+
+  
+
+}
+.booking-form {
+  position: absolute;
+  top: -449px;
+  right: 0px;
+  display: inline-block;
+  width: 510px;
+  padding: 50px 52px 56px;
+  background: #fff;
+  @include box-sizing(border-box);
+  z-index: 2;
+
+ &:after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: url(../images/shadow.png);
+    z-index: 1;
+  }
+
+  @media (max-width: 1199px) {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -255px;
+    
+    &:after {
+      display: none;
+    }
+    @media (max-width: 528px) {
+      position: relative;
+      left: 0;
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+
+
+
+  input,
+  textarea {
+    outline: none;
+  
+    padding: 13px 10px;
+    font-size: 24px;
+    font-family: $opensans;
+    text-transform: uppercase;
+    line-height: 32px;
+    height: 67px;
+    width: 100%;
+    border: 2px solid lighten(saturate(adjust_hue(#888888, 0), 6.382978723404229%), 37.45098039215686%);
+    @include border-radius(5px);
+    @include box-sizing(border-box);
+  }
+
+  textarea {
+    min-height: 200px;
+    resize: none;
+  }
+
+  .tmInput + .tmInput {
+    margin-top: 21px;
+  }
+
+  .cntr{
+    @include clearfix;
+
+    .col{
+      float: left;
+      width: 32%;
+
+      & + .col{
+        margin-left: 2%;
+      }
+    }
+  }
+
+  a[data-type='submit']{
+    margin-top: 30px;
+    padding: 21px 17px 25px;
+    @include buttonStyle();
+  }
+
+  @media (max-width: 1199px) {
+    .cntr{
+      .col{
+        float: none;
+        width: 100%;
+      }
+
+      .col + .col{
+        margin-left: 0;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  
+}
+
+.tmInput, .tmDatepicker, .tmSelect{
+  position: relative;
+
+  &:before{
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    margin-top: -10px;
+    font-size: 14px;
+    line-height: 22px;
+    color: $default;
+  }
+
+  input{
+    padding-left: 19px;
+    border: 1px solid #c7c7c7;
+  }
+}
+
+.tmDatepicker, .tmSelect{
+  display: block;
+  input{
+    padding-right: 30px;
+  }
+  &:after{
+    content: $fa-angle-down;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    right: 15px;
+    font: 400 14px/20px $fa;
+    color: #c9c9c9;
+  }
+}
+
+.controlHolder + .controlHolder {
+  margin-top: 10px;
+}
+
+.controlHolder {
+  position: relative;
+}
+
+.controlHolder + .cntr{
+  margin-top: 10px;
+}
+
+.cntr + .btn{
+  margin-top: 20px;
+}
+
+/* Messages */
+.error-message {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-weight: normal;
+  text-align: right;
+  width: 100%;
+  font-size: 10px;
+  line-height: 10px;
+  z-index: 4;
+  color: #FE5353;
+}
+
+.success-message {
+  margin-top: -35px!important;
+  position: absolute;
+  top: 100%;
+  text-align: left;
+  margin: 5px 0px;
+  color: #13FF63;
+  font-size: 14px;
+  line-height: 15px;
+}
+
+/* transformSelect CSS */
+.tmSelect {
+  clear: both;
+  width: 100%;
+  margin: 0px;
+  li {
+    position: relative;
+    list-style: none;
+  }
+  span, input[type=text] {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    left: 0;
+    top: 0;
+    margin: 0;
+  }
+
+  &:before{
+    content: '\f017';
+    font: 400 14px/20px $fa;
+    z-index: 1;
+  }
+
+  &.auto {
+    cursor: pointer;
+    span {
+      background: transparent;
+    }
+    padding: 0;
+    margin: 0 0 20px 0;
+    line-height: 20px;
+    @include customStyle();
+    
+    @include box-sizing(border-box);
+    ul {
+      margin: 1px 0 0;
+      @include box-sizing(border-box);
+      width: 100%;
+      background: #F9F9F9;
+    }
+    > li {
+      &:first-child > span {
+        padding: 7px 12px;
+        width: 35px;
+        height: 100%;
+        @include box-sizing(border-box);
+      }
+    }
+  }
+  ul, .transformSelectDropdown {
+    position: absolute;
+    width: 100%;
+    max-height: 210px;
+    padding: 7px 0px;
+    margin: 0px;
+    @include customStyle();
+    
+    border-top: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    @include box-sizing(border-box);
+    box-shadow: none;
+    background: #F9F9F9;
+    z-index: 10;
+    span {
+      border: 0;
+      color: #000;
+      padding: 5px 13px;
+      &:hover {
+        background: #CCC;
+      }
+    }
+  }
+  ul li input[type=checkbox] {
+    position: relative;
+    top: 2px;
+    margin: 0 5px 0 0;
+    cursor: pointer;
+  }
+}
+
+/* Radio */
+.trans-element-radio {
+  display: inline-block;
+  display: block;
+  zoom: 1;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.tmRadio {
+  padding-left: 0;
+  p {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  p {
+    padding-bottom: 0;
+    margin-bottom: 3px;
+  }
+  input {
+    margin-right: 5px;
+  }
+  .unchecked, .checked {
+    position: relative;
+    cursor: pointer;
+    margin-right: 10px;
+    &:after {
+      content: '\f10c';
+      position: relative;
+      top: 2px;
+      
+    }
+  }
+  .checked {
+    &:after {
+      content: '\f05d';
+    }
+  }
+}
+
+/* Checkbox */
+.trans-element-checkbox {
+  cursor: pointer;
+  zoom: 1;
+  span {
+    padding-left: 40px;
+  }
+  &.checked {
+    &:after {
+      content: '\f046';
+    }
+  }
+  &:after {
+    content: '\f096';
+    position: relative;
+    display: inline-block;
+    top: 2px;
+    width: 17px;
+    
+  }
+  &.unchecked {
+    &:after {
+      content: '\f096';
+    }
+  }
+}
+
+.tmCheckbox, .tmRadio {
+  margin-left: 0;
+  padding-left: 0;
+  padding: 0;
+  span {
+    position: relative;
+    margin-right: 10px;
+  }
+}
+
+.ui-datepicker {
+  padding: 10px;
+  width: 282px;
+  font-size: 13px;
+  display: none;
+  z-index: 100 !important;
+  @include customStyle();
+  background: #F9F9F9;
+  a {
+    color: #777;
+    &:hover {
+      color: #000;
+      text-decoration: none;
+    }
+  }
+}
+
+.ui-datepicker-prev, .ui-datepicker-next {
+  cursor: pointer;
+  float: left;
+}
+
+.ui-datepicker-next {
+  float: right;
+}
+
+.ui-datepicker-title {
+  text-align: center;
+}
+
+.ui-datepicker-calendar {
+  margin: 10px 11px;
+  td {
+    padding: 1px 10px;
+    text-align: center;
+  }
+  .ui-datepicker-current-day, .ui-datepicker-today {
+    padding: 3px;
+    background: $primary;
+    color: #FFF;
+
+    a{
+      color: #FFF;
+    }
+  }
+}
+
+button.ui-state-default {
+  @include reset-button;
+  padding: 4px 6px;
+  background: $primary;
+  color: #FFF;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  @include transition(.3s all ease);
+
+  &[data-handler='today']{
+    display: none;
+  }
+
+  &:hover{
+    background: $secondary;
+  }
+}
+
+.ui-datepicker-close {
+  float: right;
+}

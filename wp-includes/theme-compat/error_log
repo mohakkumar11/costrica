@@ -1,0 +1,1 @@
+[06-Jun-2018 22:59:25 UTC] PHP Fatal error:  Call to undefined function post_class() in /home/costaricavacatio/public_html/wp-includes/theme-compat/embed-content.php on line 13
